@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+  font-size: 1rem;
+  margin: 0;
+}
+
+html,body{
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+  height: 100%;
+  margin: 0 auto -100px;
+}
+footer{
+  height: 100px;
+  background-color: rebeccapurple;
+}
+.push{
+  height: 100px;
+}
