@@ -6,4 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./start-menu.component.css']
 })
 export class StartMenuComponent {
+  mode: string = "";
+  setMode(mode: string) {
+    this.mode = mode;
+  }
 }

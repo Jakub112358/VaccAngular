@@ -1,10 +1,13 @@
 <div class="btn-group btn-group-lg newLoadMenu" role="group" aria-label="Basic radio toggle button group">
-  <input type="radio" class="btn-check " id="new" name="loadOrNew" >
+  <input type="radio" class="btn-check " id="new" name="loadOrNew" (change)="setMode('new')">
   <label class="btn btn-outline-primary" for="new">new calendar</label>
 
-  <input type="radio" class="btn-check " id="load" name="loadOrNew" >
+  <input type="radio" class="btn-check " id="load" name="loadOrNew" (change)="setMode('load')">
   <label class="btn btn-outline-primary" for="load">load calendar</label>
 </div>
+<div *ngIf="mode==='new'"><app-new-calendar></app-new-calendar></div>
+<div *ngIf="mode==='load'"><app-load-calendar></app-load-calendar></div>
+
 
 
 

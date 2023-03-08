@@ -1,0 +1,43 @@
+<form>
+  <div class="form-group">
+    <label for="nameInput">Name: </label>
+    <input type="text" class="form-control" id="nameInput" placeholder="child's name" [(ngModel)]="name" [ngModelOptions]="{standalone: true}">
+  </div>
+
+  <div class="incorrectInput" *ngIf="incorrectName">
+    <p>Incorrect name</p>
+  </div>
+
+  <div class="form-group">
+    <label for="birthDate">Birth date: </label>
+    <input type="date" class="form-control" id="birthDate" (change)="onBirthDateChange()"  [(ngModel)]="birthDate" [ngModelOptions]="{standalone: true}" >
+  </div>
+
+  <div class="incorrectInput" *ngIf="incorrectBirthDate">
+    <p>Incorrect birth date</p>
+  </div>
+
+  <div class="form-group">
+    <label for="firstVaccDate">First Vaccination Date: </label>
+    <input type="date" class="form-control" id="firstVaccDate" placeholder="{{firstVaccDate}}" [(ngModel)]="firstVaccDate" [ngModelOptions]="{standalone: true}">
+  </div>
+
+  <div class="incorrectInput" *ngIf="incorrectVaccDate">
+    <p>Incorrect first vaccination date</p>
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" id="agreement1" [(ngModel)]="agreement1" [ngModelOptions]="{standalone: true}">
+    <label class="form-check-label" for="agreement1">I solemnly swear that I am up to no good</label>
+  </div>
+
+  <div class="incorrectInput" *ngIf="agreementNotChecked">
+    <p>Mischief managed</p>
+  </div>
+
+
+  <button (click)="createCalendar()">Create calendar</button>
+
+
+
+</form>

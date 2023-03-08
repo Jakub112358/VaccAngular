@@ -1,21 +1,27 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#"><img src ="https://prajo.eu/9735-large_default/strzykawka-do-peklowania-30ml-kinghoff.jpg" alt="logo" width="50" height="50"></a>
-
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <img src="https://prajo.eu/9735-large_default/strzykawka-do-peklowania-30ml-kinghoff.jpg" alt="logo" width="50"
+             height="50">
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="#">NEW CALENDAR</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+        <a [ngClass]="isSelectorActive? 'nav-link' : 'nav-link disabled'"  href="#">VACCINE SELECTOR</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a [ngClass]="isCalendarActive? 'nav-link' : 'nav-link disabled'"  href="#">VACCINE CALENDAR</a>
       </li>
+
+
     </ul>
   </div>
 </nav>
+
+
+
+
+
 
