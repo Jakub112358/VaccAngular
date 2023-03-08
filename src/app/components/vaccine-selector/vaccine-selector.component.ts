@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {UserDataService} from "../../services/user-data.service";
 
 @Component({
   selector: 'app-vaccine-selector',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./vaccine-selector.component.css']
 })
 export class VaccineSelectorComponent {
+
+  constructor() {
+  }
+
 
 }

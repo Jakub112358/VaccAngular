@@ -1,12 +1,15 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {UserDataService} from "../../services/user-data.service";
 
 @Component({
   selector: 'app-new-calendar',
   templateUrl: './new-calendar.component.html',
   styleUrls: ['./new-calendar.component.css']
 })
-export class NewCalendarComponent {
+export class NewCalendarComponent implements OnInit {
+
+
   agreement1: boolean = false;
   name: string = "";
   birthDate: string = "";
@@ -17,21 +20,23 @@ export class NewCalendarComponent {
   incorrectVaccDate: boolean = false;
   agreementNotChecked: boolean = false;
 
-  constructor(private readonly router: Router) {
+  constructor(private readonly router: Router,
+              private readonly userData: UserDataService) {
   }
-  showSomething() {
-    console.log(this.name);
-    console.log(this.birthDate);
-    console.log(this.firstVaccDate);
 
+  ngOnInit(): void {
+    console.log('on init')
+    this.getCurrentUserData();
   }
 
   createCalendar() {
     if (this.validateInput()) {
-      console.log('jest ok');
-      this.router.navigate(['select']);
+      this.saveCurrentUserData();
+      this.userData.setIsSelectorActive(true);
+      this.router.navigate(['selector']);
     }
   }
+
 
   onBirthDateChange() {
     this.firstVaccDate = this.birthDate;
@@ -78,6 +83,20 @@ export class NewCalendarComponent {
   private validateAgreement1(): boolean {
     this.agreement1 ? this.agreementNotChecked = false : this.agreementNotChecked = true;
     return this.agreement1;
+  }
+
+  private getCurrentUserData() {
+    this.agreement1 = this.userData.agreement1;
+    this.name = this.userData.name;
+    this.birthDate = this.userData.birthDate;
+    this.firstVaccDate = this.userData.firstVaccDate;
+  }
+
+  private saveCurrentUserData() {
+    this.userData.agreement1 = this.agreement1;
+    this.userData.name = this.name;
+    this.userData.birthDate = this.birthDate;
+    this.userData.firstVaccDate = this.firstVaccDate;
   }
 
 }

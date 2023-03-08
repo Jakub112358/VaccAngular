@@ -6,13 +6,13 @@
              height="50">
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">NEW CALENDAR</a>
+        <button class="nav-link" (click)="redirect('')">NEW CALENDAR</button>
       </li>
       <li class="nav-item">
-        <a [ngClass]="isSelectorActive? 'nav-link' : 'nav-link disabled'"  href="#">VACCINE SELECTOR</a>
+        <button [ngClass]="isSelectorActive? 'nav-link' : 'nav-link disabled'" (click)="redirect('selector')">VACCINE SELECTOR</button>
       </li>
       <li class="nav-item">
-        <a [ngClass]="isCalendarActive? 'nav-link' : 'nav-link disabled'"  href="#">VACCINE CALENDAR</a>
+        <button [ngClass]="isCalendarActive? 'nav-link' : 'nav-link disabled'">VACCINE CALENDAR</button>
       </li>
 
 

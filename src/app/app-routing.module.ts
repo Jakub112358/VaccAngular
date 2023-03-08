@@ -5,7 +5,7 @@ import {VaccineSelectorComponent} from "./components/vaccine-selector/vaccine-se
 
 const routes: Routes = [
   {path: '', component: StartMenuComponent},
-  {path: 'select', component: VaccineSelectorComponent}
+  {path: 'selector', component: VaccineSelectorComponent}
 ];
 
 @NgModule({
