@@ -1,4 +1,28 @@
-<p>vaccine-selector works!</p>
+<table>
+  <tr>
+    <th>Disease</th>
+    <th>Checked</th>
+    <th>Vaccination</th>
+  </tr>
+  <tr *ngFor="let disease of diseases">
+    <td>{{disease.name}}</td>
+
+    <td><input type="checkbox" [(ngModel)]="disease.isChecked" disabled ="{{disease.isObligatory}}"></td>
+    <td>
+      <div *ngIf="disease.isChecked">
+      <select [(ngModel)] = "disease.selectedVaccName">
+        <option *ngFor="let vacc of this.getVaccsForDisease(disease.id)" value="{{vacc}}">{{vacc}}</option>
+      </select>
+      </div>
+    </td>
+    <td>
+      {{disease.selectedVaccName}}
+    </td>
+  </tr>
+</table>
+
+<button (click)="showVaccs()">display vaccs</button>
+
 
 
 

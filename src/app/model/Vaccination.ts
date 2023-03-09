@@ -1,8 +1,8 @@
-import {Disease} from "./Disease";
 
 export interface Vaccination {
+  id: number;
   name: string;
-  diseases: Disease[];
   isChecked: boolean;
   isDefault: boolean;
+  diseasesId: number[];
 }

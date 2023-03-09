@@ -1,6 +1,8 @@
-import {Vaccination} from "./Vaccination";
 
 export interface Disease{
+  id: number;
   name: string;
-  isChecked: boolean;
+  isChecked?: boolean;
+  isObligatory: boolean;
+  selectedVaccName?: string;
 }
