@@ -1,0 +1,7 @@
+<ul>
+  <li *ngFor="let vaccine of vaccines">
+    {{vaccine.name}}: dates:
+      <p *ngFor="let date of vaccine.dosesDates">{{date}}</p>
+  </li>
+</ul>
+

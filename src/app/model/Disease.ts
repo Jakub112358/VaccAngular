@@ -4,5 +4,5 @@ export interface Disease{
   name: string;
   isChecked?: boolean;
   isObligatory: boolean;
-  selectedVaccName?: string;
+  selectedVaccId?: number;
 }

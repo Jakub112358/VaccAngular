@@ -20,14 +20,18 @@ export class VaccinesService {
     return this.diseases;
   }
 
-  getVaccsForDisease(diseaseId: number):Vaccination[]{
+  getVaccsForDisease(diseaseId: number): Vaccination[] {
     const vaccs: Vaccination[] = [];
-    this.vaccines.forEach((v)=>{
-      if(v.diseasesId.includes(diseaseId)){
+    this.vaccines.forEach((v) => {
+      if (v.diseasesId.includes(diseaseId)) {
         vaccs.push(v);
       }
     })
     return vaccs;
+  }
+
+  getVaccWithId(vaccId: number) {
+    return this.vaccines.find((v) => v.id === vaccId);
   }
 
   private loadDiseasesFromDataSource() {

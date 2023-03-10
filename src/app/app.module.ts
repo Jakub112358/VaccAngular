@@ -11,6 +11,7 @@ import { NewCalendarComponent } from './components/new-calendar/new-calendar.com
 import { LoadCalendarComponent } from './components/load-calendar/load-calendar.component';
 import {FormsModule} from "@angular/forms";
 import { VaccineSelectorComponent } from './components/vaccine-selector/vaccine-selector.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { VaccineSelectorComponent } from './components/vaccine-selector/vaccine-
     StartMenuComponent,
     NewCalendarComponent,
     LoadCalendarComponent,
-    VaccineSelectorComponent
+    VaccineSelectorComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
