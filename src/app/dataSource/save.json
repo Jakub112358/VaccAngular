@@ -1,0 +1,9 @@
+[
+  {
+    "userName": "Bob",
+    "birthDate": "2023-03-10",
+    "firstVaccDate": "2023-03-10",
+    "agreement1": true,
+    "selectedVaccinesIds": [1,2,3]
+  }
+]

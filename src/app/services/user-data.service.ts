@@ -1,33 +1,28 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 import {Vaccination} from "../model/Vaccination";
+import {Save} from "../model/Save";
+import {VaccinesService} from "./vaccines.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserDataService {
-  name: string = "";
-
-  birthDate: string = "2023-03-10";
-  // birthDate: string = "";
+  userName: string = "";
+  birthDate: string = "";
   firstVaccDate: string = "";
   agreement1: boolean = false;
-  // selectedVaccines: Vaccination[]=[];
-  //just for tests, version above is correct;
-  selectedVaccines: Vaccination[]=[
-    {id: 1, name: 'Vacc 3 in 1', isChecked: false, isDefault: false, diseasesId: [1,2,3],intervals:[0,10,10]},
-    {id: 2, name: 'Vacc B', isChecked: false, isDefault: false, diseasesId: [4],intervals:[0,20]}
-  ];
+  selectedVaccines: Vaccination[]=[];
+
   private isSelectorActive$ = new BehaviorSubject<any>({});
   selectedIsSelectorActive$ = this.isSelectorActive$.asObservable();
   private isCalendarActive$ = new BehaviorSubject<any>({});
   selectedIsCalendarActive$ = this.isCalendarActive$.asObservable();
 
 
-  constructor() {
-    //in release version should be 2x false
-    this.setIsSelectorActive(!false);
-    this.setIsCalendarActive(!false);
+  constructor(private readonly vaccService: VaccinesService) {
+    this.setIsSelectorActive(false);
+    this.setIsCalendarActive(false);
   }
 
   setIsSelectorActive(value: boolean){
@@ -36,6 +31,30 @@ export class UserDataService {
 
   setIsCalendarActive(value: boolean){
     this.isCalendarActive$.next(value);
+  }
+
+  setSavedData(save: Save){
+    this.resetForm();
+    this.birthDate = save.birthDate;
+    this.firstVaccDate = save.firstVaccDate;
+    this.userName = save.userName;
+    this.agreement1 = save.agreement1;
+    save.selectedVaccinesIds.forEach((vaccId)=>{
+      let vacc = this.vaccService.getVaccWithId(vaccId);
+      if(vacc != null){
+        this.selectedVaccines.push(vacc);
+      }
+    })
+  }
+
+  private resetForm(){
+    this.birthDate="";
+    this.firstVaccDate="";
+    this.userName = "";
+    this.agreement1 = false;
+    this.selectedVaccines = [];
+    this.setIsCalendarActive(false);
+    this.setIsSelectorActive(false);
   }
 
 

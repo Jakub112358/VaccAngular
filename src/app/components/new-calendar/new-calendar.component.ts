@@ -86,14 +86,14 @@ export class NewCalendarComponent implements OnInit {
 
   private getCurrentUserData() {
     this.agreement1 = this.userData.agreement1;
-    this.name = this.userData.name;
+    this.name = this.userData.userName;
     this.birthDate = this.userData.birthDate;
     this.firstVaccDate = this.userData.firstVaccDate;
   }
 
   private saveCurrentUserData() {
     this.userData.agreement1 = this.agreement1;
-    this.userData.name = this.name;
+    this.userData.userName = this.name;
     this.userData.birthDate = this.birthDate;
     this.userData.firstVaccDate = this.firstVaccDate;
   }
