@@ -34,6 +34,19 @@ export class VaccinesService {
     return this.vaccines.find((v) => v.id === vaccId);
   }
 
+  getDiseaseWithId(disId: number) {
+    return this.diseases.find((d) => d.id === disId);
+  }
+
+  setVaccSelected(vacc: Vaccination) {
+    vacc.diseasesId.forEach((disId) => {
+      let dis = this.getDiseaseWithId(disId);
+      if(dis != null){
+        dis.selectedVaccId = vacc.id;
+      }
+    })
+  }
+
   private loadDiseasesFromDataSource() {
     this.diseases = DISEASES;
   }

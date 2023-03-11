@@ -25,7 +25,6 @@ export class NewCalendarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('on init')
     this.getCurrentUserData();
   }
 

@@ -22,6 +22,7 @@ export class VaccineSelectorComponent implements OnInit {
 
   ngOnInit(): void {
     this.diseases = this.vaccService.getDiseases();
+    this.loadUserVaccinationData();
   }
 
   getVaccsForDisease(diseaseId: number): Vaccination[] {
@@ -48,6 +49,12 @@ export class VaccineSelectorComponent implements OnInit {
       }
     })
     this.userDataService.selectedVaccines = this.selectedVaccs;
+  }
+
+  private loadUserVaccinationData(){
+    this.userDataService.selectedVaccines.forEach((v)=>{
+      this.vaccService.setVaccSelected(v);
+    })
   }
 
 }

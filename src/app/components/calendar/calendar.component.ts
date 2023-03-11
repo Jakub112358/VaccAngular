@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserDataService} from "../../services/user-data.service";
 import {Vaccination} from "../../model/Vaccination";
 
@@ -7,20 +7,24 @@ import {Vaccination} from "../../model/Vaccination";
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
-export class CalendarComponent {
+export class CalendarComponent implements OnInit {
   constructor(private readonly userDataService: UserDataService) {
+  }
+
+  ngOnInit(): void {
+    console.log('calendar: on init')
+    this.vaccines = this.userDataService.selectedVaccines;
     this.computeDosesDates();
   }
 
-  vaccines: Vaccination[] = this.userDataService.selectedVaccines;
+  vaccines: Vaccination[] = [];
 
   private computeDosesDates() {
-    console.log('compute doses date')
     this.vaccines.forEach((vacc) => {
-      console.log('in vaccination: ' + vacc.name)
+      vacc.dosesDates = [];
       vacc.intervals.forEach((days) => {
         //TODO: refactor dates to Date class, not string
-        if (vacc.dosesDates != null) {
+        if (vacc.dosesDates != null && vacc.dosesDates.length > 0) {
           const date: Date = new Date(vacc.dosesDates[vacc.dosesDates.length - 1]);
           date.setDate(date.getDate() + days);
           vacc.dosesDates.push(date);
